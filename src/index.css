@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  padding: 0 0 0 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.list-group {
+  margin-left: 0px;
+
+  padding: 10px 10px 0;
+
+}
+
+.navbar {
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-top: 30px;
+}
+
+div#messgaegBox{
+  background-color: aliceblue;
+}
+
+div#viewMessageBox{
+  background-color: aliceblue;
+
+}
+
+div#writeMessageBox{
+  background-color: aliceblue;
+
+}
