@@ -63,10 +63,15 @@ class Messages extends Component {
   };
 
   handleView = () => {
-
     const messageText = this.state.messages.find((m) => m.text);
     console.log(messageText);
+
+
+
+
+
   }
+
 
 
   handlePageChange = page => {
@@ -154,21 +159,22 @@ class Messages extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.state.data.map((message) => (
+              {this.state.messages.map((message) => (
                 <tr key={message._id}>
-                  <td>{message.createdAt}</td>
-                  <td>incoming</td>
+                  <td>{message.date.slice(0, 13)}</td>
+                  <td>{message.direction}</td>
                   <td>{message.from}</td>
                   <td>{message.to}</td>
-                  <td>{message.notification}</td>
+                  <td>{message.text.slice(0, 20) + "..."}</td>
                   <td>
                     <div className="btn-group mr-2" >
-                      <Link to="/viewMessage"
-                        onClick={() => this.handleView(message.notification)}
+                      <div
+                        onClick={() => this.handleView(message.text)}
                         className="btn btn-outline-success btn-sm" >
                         <img src={eye} className="message-eye" alt="eye" />
                         View
-                      </Link>
+                        {/* </Link> */}
+                      </div>
                     </div>
                     <div className="btn-group mr-2">
                       <button
@@ -190,7 +196,7 @@ class Messages extends Component {
             onPageChange={this.handlePageChange} />
         </div>
 
-      </div>
+      </div >
     );
   }
 }
