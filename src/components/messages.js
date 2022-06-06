@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import { Modal } from 'react-bootstrap'
 import ListGroup from './listGroup';
 import { getMessages } from "../services/fakeMessage";
 import { getMessageType } from "../services/fakeMessageType";
 import trash from "../trash.svg";
 import eye from "../eye.svg";
-import Modal from "./modal";
+// import Modal from "./modal";
 
 import Pagination from "./pagination";
 import { paginate } from '../utils/paginate';
@@ -16,11 +17,13 @@ import ViewMessage from './viewMessage';
 class Messages extends Component {
   state = {
     messages: getMessages(),
+    currentMessage: null,
     messageType: [],
     currentPage: 1,
     selectedType: {},  //check backend
     pageSize: 2,
-    data: []
+    data: [],
+    show: false
 
   };
 
@@ -41,7 +44,12 @@ class Messages extends Component {
 
   }
 
-
+  handleClose = () => {
+    this.setState({ show: false });
+  }
+  handleShow = () => {
+    this.setState({ show: true });
+  }
   // componentDidUpdate(){
   //   fetchMessages();
   // }
@@ -130,7 +138,7 @@ class Messages extends Component {
 
 
     return (
-      <div className="row">
+      <div className="row" id="filterBox">
         <div className="col-0">
           <ListGroup
             items={this.state.messageType}
@@ -169,7 +177,11 @@ class Messages extends Component {
                   <td>
                     <div className="btn-group mr-2" >
                       <div
-                        onClick={() => this.handleView(message.text)}
+                        onClick={() => {
+                          this.handleShow()
+                          console.log(message.text);
+                          this.setState({ currentMessage: message.text })
+                        }}
                         className="btn btn-outline-success btn-sm" >
                         <img src={eye} className="message-eye" alt="eye" />
                         View
@@ -195,7 +207,21 @@ class Messages extends Component {
             currentPage={currentPage}
             onPageChange={this.handlePageChange} />
         </div>
+        <Modal
+          show={this.state.show}
+          onHide={() => {
+            this.handleClose()
+          }}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Pickup your ssss</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
 
+            {this.state.currentMessage}
+          </Modal.Body>
+          <Modal.Footer></Modal.Footer>
+        </Modal>
       </div >
     );
   }
