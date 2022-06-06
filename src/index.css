@@ -6,6 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%; margin: 0 auto;
 }
 
 code {
@@ -30,14 +31,26 @@ code {
 
 div#messgaegBox{
   background-color: aliceblue;
+  
 }
 
-div#viewMessageBox{
+/* div#viewMessageBox{
   background-color: aliceblue;
 
-}
+} */
 
 div#writeMessageBox{
   background-color: aliceblue;
 
+}
+
+@media screen and (max-width: 1000px){
+   body { width: 100%;}
+  .list-group { width: 100% ;}
+  div#messgaegBox { width: 100%;}
+}
+
+@media  screen and (max-width: 600px) {
+  .list-group { width: 100%; }
+  div#messgaegBox{width: 100%;}
 }
