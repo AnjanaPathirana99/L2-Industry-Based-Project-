@@ -138,8 +138,8 @@ class Messages extends Component {
 
 
     return (
-      <div className="row" id="filterBox">
-        <div className="col-0">
+      <div className="row" id="listGroup-messageBox-pagination">
+        <div className="col">
           <ListGroup
             items={this.state.messageType}
             selectedItem={this.state.selectedType}
@@ -147,8 +147,7 @@ class Messages extends Component {
         </div>
 
 
-        <div className="col" id="messgaegBox"
-        >
+        <div className="row" id="messgaegBox">
           <Link
             to="/writeMessages" className="btn btn-primary float-right" style={{ marginTop: 20, marginBottom: 20 }}
           >New Message</Link>
@@ -188,6 +187,7 @@ class Messages extends Component {
                         {/* </Link> */}
                       </div>
                     </div>
+
                     <div className="btn-group mr-2">
                       <button
                         onClick={() => this.handleDelete(message)}
@@ -201,11 +201,15 @@ class Messages extends Component {
               ))}
             </tbody>
           </table>
+
+
+
           <Pagination
             itemsCount={filteredMessages.length}
             pageSize={pageSize}
             currentPage={currentPage}
             onPageChange={this.handlePageChange} />
+
         </div>
         <Modal
           show={this.state.show}
@@ -214,14 +218,14 @@ class Messages extends Component {
           }}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Pickup your ssss</Modal.Title>
+            <Modal.Title>{<h4>Message from {this.state.messages.find(user => messages.from)}</h4>}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-
             {this.state.currentMessage}
           </Modal.Body>
           <Modal.Footer></Modal.Footer>
         </Modal>
+
       </div >
     );
   }
